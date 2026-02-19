@@ -15,8 +15,15 @@ llm=ChatGroq(
 
 
 prompt='''
-Act like an experienced Lawyer, Analyse the following Data and List down Risks in the following Document.
-Data:{data}
+Act like an experienced Lawyer, Analyse the following Document Data check it for the following risks and others you can discover:
+1. Financial Risks and Obligations
+2. Legal and Compliance Obligations
+3. Operational Risks and Performance
+4. Security and Data Risks
+5. Renewal and Strategic Risks
+6. Vendor/Counterparty Specifics
+
+Document Data:{data}
 '''
 
 llm_prompt=PromptTemplate(template=prompt, input_variables=["data"])
