@@ -3,20 +3,17 @@ from fastapi.responses import StreamingResponse
 import tempfile
 from functions import document_loading 
 from LLM import chain
-import  time, os, asyncio
+import os
 app=FastAPI()
 
 async def Stream(temp_path:str, ext:str , filetype:str ):
     yield f"Document Loading right now please wait..................................\n\n"
-    await asyncio.sleep(0)
-    print("In def stream.")
     text= await document_loading(temp_path, ext,filetype)
-    response= await chain.ainvoke({"data":text})
-    for lines in str(response):
-        yield lines +"\n"
-        await asyncio.sleep(0)
-    print(response)
-    print("DONE CONTENT")
+    if text=="NOT SATISFACTORY DATA":
+        yield "NOT SATISFACTORY DATA"
+    else:
+        for chunk in chain.stream({"data":text}):
+            yield chunk
     
 
 @app.post("/stream/")
