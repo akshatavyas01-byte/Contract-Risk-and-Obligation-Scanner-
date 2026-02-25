@@ -13,25 +13,51 @@ llm=ChatGroq(
     temperature=0.1
 )
 
-
 prompt='''
-Act like an experienced Lawyer, Analyse the following Document Data check it for the following risks and others you can discover:
+You are an experienced contract risk analyst.
+
+Extract only NEW risks and obligations found in this portion of the contract.
+Be concise.
+Do not repeat headings.
+Return bullet points only.
+Do not restate category titles unless necessary.
+
+Document Chunk:
+{data}
+
+'''
+
+
+prompt2='''
+Act like an experienced Contract reviewer, categorizer the followin risks into:
 1. Financial Risks and Obligations
 2. Legal and Compliance Obligations
 3. Operational Risks and Performance
 4. Security and Data Risks
 5. Renewal and Strategic Risks
 6. Vendor/Counterparty Specifics
-
-Document Data:{data}
+Generate a summery and conclusion for it.
+Risks:{risk}
 '''
 
+
+
+
+
 llm_prompt=PromptTemplate(template=prompt, input_variables=["data"])
+llm_prompt2=PromptTemplate(template=prompt2, input_variables=["risk"])
 
 output_parser=StrOutputParser()
 
 chain=(
     llm_prompt
+    |llm
+    |output_parser
+)
+
+
+chain2=(
+    llm_prompt2
     |llm
     |output_parser
 )
