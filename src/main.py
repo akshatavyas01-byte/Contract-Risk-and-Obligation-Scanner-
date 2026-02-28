@@ -1,9 +1,9 @@
 from fastapi import FastAPI,UploadFile, File, Query
 from fastapi.responses import StreamingResponse
 import tempfile
-from functions import document_loading 
+from src.functions import document_loading 
 from langchain_text_splitters import CharacterTextSplitter
-from LLM import chain, chain2
+from src.LLM import chain, chain2
 import os
 app=FastAPI()
 
@@ -24,12 +24,12 @@ async def Stream(temp_path:str, ext:str , filetype:str ):
                     chunk_data+=data+"\n"
                 full_data+=chunk_data
             except Exception as e:
-                yield e 
+                yield f"Exception {str(e)}" 
     try:
         for chunk in chain2.stream({"risk":chunk_data}):
             yield chunk
     except Exception as e:
-        yield e
+        yield f"Exception {str(e)}" 
 
     
 
