@@ -82,19 +82,19 @@ The extracted text is spilt using CharacterTextSpiltter to stay within LLM token
 
 OUTPUT- RISKS --> 
 ### 1. Docker run:
-![Alt Text](images\docker_run.png)
+![Alt Text](images/docker_run.png)
 
 ### 2. Streamlit UI:
-![Alt Text](images\streamlit_ui.png)
+![Alt Text](images/streamlit_ui.png)
 
 ### 3. Upload document:
-![Alt Text](images\upload_document.png)
+![Alt Text](images/upload_document.png)
 
 ### 4. Streamed Risk:
-![Alt Text](images\risks_streamed.png)
+![Alt Text](images/risks_streamed.png)
 
 ### 5. Video Demo:
-[![Watch Demo](images\streamlit_ui.png)](https://www.youtube.com/watch?v=GqmT0u1-EBc)
+[![Watch Demo](images/streamlit_ui.png)](https://www.youtube.com/watch?v=GqmT0u1-EBc)
 
 
 ## 9. Installation & Setup
