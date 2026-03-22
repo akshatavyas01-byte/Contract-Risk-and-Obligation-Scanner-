@@ -1,4 +1,4 @@
-# Risks and Obligtion Scanner
+# Risks and Obligation Scanner
 
 ## 1. Overview
 
@@ -54,17 +54,17 @@ The focus of this project was building a working streaming system with document 
 ## 7. How It Works (Execution Flow)
 
 1. User Upload:
-User uploadds a legal document and selects its type.
+User uploads a legal document and selects its type.
 
-2. Docuemnt loading:
+2. Document loading:
 The backend reads and extracts the text using appropriate (PDF/DOCX/TXT) loader or pdf2image(OCR) then loading.
 
 3. Chunking:
-The extracted text is spilt using CharacterTextSpiltter to stay within LLM token limit.
+The extracted text is split using CharacterTextSpiltter to stay within LLM token limit.
 
 4. Prompt Injection:
 - Each chunk is inserted into a structured prompt for risk analysis. 
-- The Extracted risks of each chunk is instered into a structured prompt for summarization and categorization of the risks.
+- The Extracted risks of each chunk is inserted into a structured prompt for summarization and categorization of the risks.
 
 5. LLM Processing:
 - The model analysis risks from each chunk.
